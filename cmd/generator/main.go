@@ -87,8 +87,8 @@ func run() error {
 	if err != nil { return err }
 	defer bufferCon.Close()
 	
-	// // Initializing logic
-	// logic := logic.NewLogic(config, l)
+	// Initializing logic
+	//logic := logic.NewService(config, l, *bufferCon)
 
 	// // Initializing delivery
 	// server := delivery.NewGeneratorServer(config, l, logic)

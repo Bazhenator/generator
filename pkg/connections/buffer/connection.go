@@ -4,12 +4,14 @@ import (
 	"context"
 
 	"github.com/Bazhenator/tools/src/logger"
+	buffer "github.com/Bazhenator/buffer/pkg/api/grpc"
 	"github.com/Bazhenator/generator/pkg/connections"
 	"google.golang.org/grpc"
 )
 
 type Connection struct {
 	CallOptions []grpc.CallOption
+	Client buffer.BufferServiceClient
 
 	conn *grpc.ClientConn
 	l    *logger.Logger
@@ -24,6 +26,7 @@ func NewConnection(ctx context.Context, l *logger.Logger, target string) (*Conne
 
 	res := &Connection{
 		CallOptions: connections.CommonCallOptions,
+		Client: buffer.NewBufferServiceClient(conn),
 		
 		conn:        conn,
 		l:           l,
