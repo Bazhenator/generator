@@ -22,10 +22,9 @@ import (
 
 	"github.com/Bazhenator/generator/configs"
 	bufferConnection "github.com/Bazhenator/generator/pkg/connections/buffer"
-	// "github.com/Bazhenator/generator/internal/delivery"
-	// "github.com/Bazhenator/generator/internal/entities"
-	// "github.com/Bazhenator/generator/internal/logic"
-	//pb "github.com/Bazhenator/generator/pkg/api/grpc"
+	"github.com/Bazhenator/generator/internal/delivery"
+	"github.com/Bazhenator/generator/internal/logic"
+	pb "github.com/Bazhenator/generator/pkg/api/grpc"
 	"github.com/Bazhenator/tools/src/logger"
 	middlewareLogging "github.com/Bazhenator/tools/src/middleware/log"
 	grpcListener "github.com/Bazhenator/tools/src/server/grpc/listener"
@@ -88,11 +87,11 @@ func run() error {
 	defer bufferCon.Close()
 	
 	// Initializing logic
-	//logic := logic.NewService(config, l, *bufferCon)
+	logic := logic.NewService(config, l, *bufferCon)
 
-	// // Initializing delivery
-	// server := delivery.NewGeneratorServer(config, l, logic)
-	// pb.RegisterGeneratorServiceServer(grpcServer, server)
+	// Initializing delivery
+	server := delivery.NewGeneratorServer(config, l, logic)
+	pb.RegisterGeneratorServiceServer(grpcServer, server)
 
 	lis, deferGrpc, err := grpcListener.NewGrpcListener(config.Grpc)
 	if err != nil {

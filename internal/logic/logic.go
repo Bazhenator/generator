@@ -42,7 +42,7 @@ func (s *Service) GenerateRequests(ctx context.Context, amount uint64) error {
 				s.l.Warn("failed to append request to buffer", logger.NewErrorField(err))
 			}
 
-			s.l.DebugCtx(ctx, "request appended successfully", nil)
+			s.l.Debug("request appended successfully")
 		}(i + 1)
 	}
 
