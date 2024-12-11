@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package generator;
+option go_package = "github.com/Bazhenator/generator";
+
+service GeneratorService {
+  rpc StartGenerator(StartGeneratorIn) returns (StartGeneratorOut); // generates requests for cleaning service
+}
+
+message StartGeneratorIn {
+  uint64 requests_amount = 1;
+}
+
+message StartGeneratorOut {
+  bool status = 1;
+}
