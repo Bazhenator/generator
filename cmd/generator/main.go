@@ -21,10 +21,11 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/Bazhenator/generator/configs"
+	bufferConnection "github.com/Bazhenator/generator/pkg/connections/buffer"
 	// "github.com/Bazhenator/generator/internal/delivery"
 	// "github.com/Bazhenator/generator/internal/entities"
 	// "github.com/Bazhenator/generator/internal/logic"
-	pb "github.com/Bazhenator/generator/pkg/api/grpc"
+	//pb "github.com/Bazhenator/generator/pkg/api/grpc"
 	"github.com/Bazhenator/tools/src/logger"
 	middlewareLogging "github.com/Bazhenator/tools/src/middleware/log"
 	grpcListener "github.com/Bazhenator/tools/src/server/grpc/listener"
@@ -80,9 +81,14 @@ func run() error {
 	}()
 
 	reflection.Register(grpcServer)
+
+	// Creating connection to buffer service
+	bufferCon, err := bufferConnection.NewConnection(ctx, l, config.BufferHost)
+	if err != nil { return err }
+	defer bufferCon.Close()
 	
 	// // Initializing logic
-	// logic := logic.NewLogic(config, l, buffer)
+	// logic := logic.NewLogic(config, l)
 
 	// // Initializing delivery
 	// server := delivery.NewGeneratorServer(config, l, logic)
