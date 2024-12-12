@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -26,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GeneratorServiceClient interface {
-	StartGenerator(ctx context.Context, in *StartGeneratorIn, opts ...grpc.CallOption) (*StartGeneratorOut, error)
+	StartGenerator(ctx context.Context, in *StartGeneratorIn, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type generatorServiceClient struct {
@@ -37,8 +38,8 @@ func NewGeneratorServiceClient(cc grpc.ClientConnInterface) GeneratorServiceClie
 	return &generatorServiceClient{cc}
 }
 
-func (c *generatorServiceClient) StartGenerator(ctx context.Context, in *StartGeneratorIn, opts ...grpc.CallOption) (*StartGeneratorOut, error) {
-	out := new(StartGeneratorOut)
+func (c *generatorServiceClient) StartGenerator(ctx context.Context, in *StartGeneratorIn, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, GeneratorService_StartGenerator_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -50,7 +51,7 @@ func (c *generatorServiceClient) StartGenerator(ctx context.Context, in *StartGe
 // All implementations must embed UnimplementedGeneratorServiceServer
 // for forward compatibility
 type GeneratorServiceServer interface {
-	StartGenerator(context.Context, *StartGeneratorIn) (*StartGeneratorOut, error)
+	StartGenerator(context.Context, *StartGeneratorIn) (*emptypb.Empty, error)
 	mustEmbedUnimplementedGeneratorServiceServer()
 }
 
@@ -58,7 +59,7 @@ type GeneratorServiceServer interface {
 type UnimplementedGeneratorServiceServer struct {
 }
 
-func (UnimplementedGeneratorServiceServer) StartGenerator(context.Context, *StartGeneratorIn) (*StartGeneratorOut, error) {
+func (UnimplementedGeneratorServiceServer) StartGenerator(context.Context, *StartGeneratorIn) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartGenerator not implemented")
 }
 func (UnimplementedGeneratorServiceServer) mustEmbedUnimplementedGeneratorServiceServer() {}
