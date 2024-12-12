@@ -3,6 +3,8 @@ package delivery
 import (
 	"context"
 
+	"google.golang.org/protobuf/types/known/emptypb"
+
 	"github.com/Bazhenator/generator/configs"
 	"github.com/Bazhenator/generator/internal/logic"
 	"github.com/Bazhenator/generator/pkg/api/grpc"
@@ -28,14 +30,14 @@ func NewGeneratorServer(c *configs.Config, l *logger.Logger, logic logic.Generat
 }
 
 // StartGenerator starts generation of requests for cleaning service
-func (s *GeneratorServer) StartGenerator(ctx context.Context, in *generator.StartGeneratorIn) (*generator.StartGeneratorOut, error) {
+func (s *GeneratorServer) StartGenerator(ctx context.Context, in *generator.StartGeneratorIn) (*emptypb.Empty, error) {
 	s.l.InfoCtx(ctx, "StartGenerator called", logger.NewField("request_amount", in.RequestsAmount))
 
 	err := s.logic.GenerateRequests(ctx, in.RequestsAmount)
 	if err != nil {
 		s.l.Error("Failed to generate requests", logger.NewErrorField(err))
-		return &generator.StartGeneratorOut{Status: false}, err
+		return &emptypb.Empty{}, err
 	}
 
-	return &generator.StartGeneratorOut{Status: true}, nil
+	return &emptypb.Empty{}, nil
 }
