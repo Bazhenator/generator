@@ -5,9 +5,5 @@ import "google/protobuf/empty.proto";
 option go_package = "github.com/Bazhenator/generator";
 
 service GeneratorService {
-  rpc StartGenerator(StartGeneratorIn) returns (google.protobuf.Empty); // generates requests for cleaning service
-}
-
-message StartGeneratorIn {
-  uint64 requests_amount = 1;
+  rpc StartGenerator(google.protobuf.Empty) returns (google.protobuf.Empty); // generates requests for cleaning service
 }

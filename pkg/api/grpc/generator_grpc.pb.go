@@ -27,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GeneratorServiceClient interface {
-	StartGenerator(ctx context.Context, in *StartGeneratorIn, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	StartGenerator(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type generatorServiceClient struct {
@@ -38,7 +38,7 @@ func NewGeneratorServiceClient(cc grpc.ClientConnInterface) GeneratorServiceClie
 	return &generatorServiceClient{cc}
 }
 
-func (c *generatorServiceClient) StartGenerator(ctx context.Context, in *StartGeneratorIn, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *generatorServiceClient) StartGenerator(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, GeneratorService_StartGenerator_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -51,7 +51,7 @@ func (c *generatorServiceClient) StartGenerator(ctx context.Context, in *StartGe
 // All implementations must embed UnimplementedGeneratorServiceServer
 // for forward compatibility
 type GeneratorServiceServer interface {
-	StartGenerator(context.Context, *StartGeneratorIn) (*emptypb.Empty, error)
+	StartGenerator(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
 	mustEmbedUnimplementedGeneratorServiceServer()
 }
 
@@ -59,7 +59,7 @@ type GeneratorServiceServer interface {
 type UnimplementedGeneratorServiceServer struct {
 }
 
-func (UnimplementedGeneratorServiceServer) StartGenerator(context.Context, *StartGeneratorIn) (*emptypb.Empty, error) {
+func (UnimplementedGeneratorServiceServer) StartGenerator(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartGenerator not implemented")
 }
 func (UnimplementedGeneratorServiceServer) mustEmbedUnimplementedGeneratorServiceServer() {}
@@ -76,7 +76,7 @@ func RegisterGeneratorServiceServer(s grpc.ServiceRegistrar, srv GeneratorServic
 }
 
 func _GeneratorService_StartGenerator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartGeneratorIn)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func _GeneratorService_StartGenerator_Handler(srv interface{}, ctx context.Conte
 		FullMethod: GeneratorService_StartGenerator_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GeneratorServiceServer).StartGenerator(ctx, req.(*StartGeneratorIn))
+		return srv.(GeneratorServiceServer).StartGenerator(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

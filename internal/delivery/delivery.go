@@ -6,7 +6,6 @@ import (
 	"google.golang.org/protobuf/types/known/emptypb"
 
 	"github.com/Bazhenator/generator/configs"
-	"github.com/Bazhenator/generator/internal/logic"
 	"github.com/Bazhenator/generator/pkg/api/grpc"
 	"github.com/Bazhenator/tools/src/logger"
 )
@@ -17,10 +16,10 @@ type GeneratorServer struct {
 	c *configs.Config
 	l *logger.Logger
 
-	logic logic.GeneratorService
+	logic GeneratorService
 }
 
-func NewGeneratorServer(c *configs.Config, l *logger.Logger, logic logic.GeneratorService) *GeneratorServer {
+func NewGeneratorServer(c *configs.Config, l *logger.Logger, logic GeneratorService) *GeneratorServer {
 	return &GeneratorServer{
 		c: c,
 		l: l,
@@ -30,10 +29,10 @@ func NewGeneratorServer(c *configs.Config, l *logger.Logger, logic logic.Generat
 }
 
 // StartGenerator starts generation of requests for cleaning service
-func (s *GeneratorServer) StartGenerator(ctx context.Context, in *generator.StartGeneratorIn) (*emptypb.Empty, error) {
-	s.l.InfoCtx(ctx, "StartGenerator called", logger.NewField("request_amount", in.RequestsAmount))
+func (s *GeneratorServer) StartGenerator(ctx context.Context, _ *emptypb.Empty) (*emptypb.Empty, error) {
+	s.l.InfoCtx(ctx, "StartGenerator called", logger.NewField("request_amount", s.c.RequestsAmount))
 
-	err := s.logic.GenerateRequests(ctx, in.RequestsAmount)
+	err := s.logic.GenerateRequests(ctx, s.c.RequestsAmount)
 	if err != nil {
 		s.l.Error("Failed to generate requests", logger.NewErrorField(err))
 		return &emptypb.Empty{}, err

@@ -30,10 +30,6 @@ import (
 	grpcListener "github.com/Bazhenator/tools/src/server/grpc/listener"
 )
 
-const (
-	BufCapacity = 5
-)
-
 func main() {
 	if err := run(); err != nil {
 		log.Fatalf("service stopped with error: %v", err)
