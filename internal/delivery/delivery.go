@@ -38,5 +38,11 @@ func (s *GeneratorServer) StartGenerator(ctx context.Context, _ *emptypb.Empty) 
 		return &emptypb.Empty{}, err
 	}
 
+	err = s.logic.CreateReport()
+	if err != nil {
+		s.l.Error("Failed to create report", logger.NewErrorField(err))
+		return &emptypb.Empty{}, err
+	}
+
 	return &emptypb.Empty{}, nil
 }

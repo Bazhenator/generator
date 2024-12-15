@@ -37,13 +37,13 @@ func main() {
 }
 
 func run() error {
-	// Initializing requester's config
+	// Initializing generator's config
 	config, err := configs.NewConfig()
 	if err != nil {
 		return err
 	}
 
-	// Initializing requester's logger
+	// Initializing generator's logger
 	l, err := logger.NewLogger(config.LoggerConfig)
 	if err != nil {
 		return err
@@ -57,7 +57,7 @@ func run() error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	// Initializing requester's grpc server
+	// Initializing generator's grpc server
 	grpcServer := newGrpcServer(config, l.Logger)
 	defer grpcServer.GracefulStop()
 

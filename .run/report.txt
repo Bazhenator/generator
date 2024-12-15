@@ -1,0 +1,138 @@
+{ req:
+      { id:             1
+       client_id:      593
+       priority:       0
+       cleaning_type:  7
+       generator_id:   0
+       status:         1
+     }
+}
+{ req:
+      { id:             9
+       client_id:      351
+       priority:       1
+       cleaning_type:  3
+       generator_id:   1
+       status:         1
+     }
+}
+{ req:
+      { id:             10
+       client_id:      897
+       priority:       2
+       cleaning_type:  8
+       generator_id:   1
+       status:         1
+     }
+}
+{ req:
+      { id:             2
+       client_id:      883
+       priority:       4
+       cleaning_type:  10
+       generator_id:   0
+       status:         1
+     }
+}
+{ req:
+      { id:             11
+       client_id:      524
+       priority:       1
+       cleaning_type:  10
+       generator_id:   1
+       status:         1
+     }
+}
+{ req:
+      { id:             3
+       client_id:      744
+       priority:       1
+       cleaning_type:  2
+       generator_id:   0
+       status:         1
+     }
+}
+{ req:
+      { id:             12
+       client_id:      667
+       priority:       4
+       cleaning_type:  2
+       generator_id:   1
+       status:         1
+     }
+}
+{ req:
+      { id:             4
+       client_id:      121
+       priority:       2
+       cleaning_type:  3
+       generator_id:   0
+       status:         1
+     }
+}
+{ req:
+      { id:             13
+       client_id:      639
+       priority:       0
+       cleaning_type:  1
+       generator_id:   1
+       status:         1
+     }
+}
+{ req:
+      { id:             5
+       client_id:      849
+       priority:       4
+       cleaning_type:  8
+       generator_id:   0
+       status:         1
+     }
+}
+{ req:
+      { id:             14
+       client_id:      366
+       priority:       0
+       cleaning_type:  10
+       generator_id:   1
+       status:         0
+     }
+}
+{ req:
+      { id:             6
+       client_id:      158
+       priority:       2
+       cleaning_type:  5
+       generator_id:   0
+       status:         0
+     }
+}
+{ req:
+      { id:             7
+       client_id:      269
+       priority:       0
+       cleaning_type:  7
+       generator_id:   0
+       status:         0
+     }
+}
+{ req:
+      { id:             15
+       client_id:      905
+       priority:       3
+       cleaning_type:  6
+       generator_id:   1
+       status:         0
+     }
+}
+{ req:
+      { id:             16
+       client_id:      477
+       priority:       4
+       cleaning_type:  3
+       generator_id:   1
+       status:         0
+     }
+}
+Summary:
+Accepted:66.666667%
+Declined:33.333333%

@@ -3,7 +3,7 @@ module github.com/Bazhenator/generator
 go 1.23.4
 
 require (
-	github.com/Bazhenator/buffer v0.0.0-20241209203831-b9d1a2bed321
+	github.com/Bazhenator/buffer v0.0.0-20241215204025-81dbb28b7c19
 	github.com/Bazhenator/tools v0.0.1
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.57.0

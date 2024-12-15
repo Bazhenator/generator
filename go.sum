@@ -1,6 +1,8 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/Bazhenator/buffer v0.0.0-20241209203831-b9d1a2bed321 h1:4eh3pvTyRZhRXIOMFSHyuyw+Zuj3LIAk8syaEgXy8RQ=
 github.com/Bazhenator/buffer v0.0.0-20241209203831-b9d1a2bed321/go.mod h1:PZg+sxhKO4cMiUL/nCaFWUmWQB8Pa1b3oXGQTUm/Z0U=
+github.com/Bazhenator/buffer v0.0.0-20241215204025-81dbb28b7c19 h1:pCngpv6qk6Dr/5hljsRq7XMzc7q8G1nzvBKImVxuTpA=
+github.com/Bazhenator/buffer v0.0.0-20241215204025-81dbb28b7c19/go.mod h1:D7h0KBrhmZXCrug4gVN+GYmPt/Ju0jc9Ti/U+5r2Nq0=
 github.com/Bazhenator/tools v0.0.1 h1:5TD3GSESmpStuFvN304n3bPsMgKBUC9a0eITedlbJLc=
 github.com/Bazhenator/tools v0.0.1/go.mod h1:OETTxJU4eRRRMgoSEY8/s2jHeBenI3RZB5dTQQfUuJ8=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
